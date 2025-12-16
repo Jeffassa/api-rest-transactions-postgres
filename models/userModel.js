@@ -1,8 +1,5 @@
-// models/userModel.js
-
 const db = require('../config/db');
 
-// Crée un utilisateur dans la base
 exports.create = async (nom, email, telephone) => {
     try {
         const result = await db.query(
@@ -20,7 +17,6 @@ exports.create = async (nom, email, telephone) => {
     }
 };
 
-// Récupère TOUS les utilisateurs
 exports.findAll = async () => {
     try {
         const result = await db.query(
@@ -31,8 +27,6 @@ exports.findAll = async () => {
         throw error;
     }
 };
-
-// Récupère un utilisateur grâce à son id
 exports.findById = async (id) => {
     try {
         const result = await db.query(
@@ -44,8 +38,6 @@ exports.findById = async (id) => {
         throw error;
     }
 };
-
-// Met à jour les informations d'un utilisateur
 exports.update = async (id, nom, email, telephone) => {
     try {
         const result = await db.query(
@@ -63,8 +55,6 @@ exports.update = async (id, nom, email, telephone) => {
         throw error;
     }
 };
-
-// Supprime un utilisateur (et ses transactions grâce à ON DELETE CASCADE)
 exports.delete = async (id) => {
     try {
         const result = await db.query(

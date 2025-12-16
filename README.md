@@ -31,7 +31,7 @@ Cette API permet la gestion de base des utilisateurs et l'enregistrement de tran
     Exécutez les scripts SQL suivants dans votre base de données :
 
     ```sql
-    -- 1. Table Utilisateurs
+    --- 1. Table Utilisateurs
     CREATE TABLE users (
         id SERIAL PRIMARY KEY,
         nom VARCHAR(255) NOT NULL,

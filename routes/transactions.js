@@ -1,12 +1,7 @@
-// routes/transactions.js
-
 const express = require('express');
 const router = express.Router();
 const transactionModel = require('../models/transactionModel'); 
 
-// ------------------------------------
-// 🎯 1. POST /api/transactions (CRÉATION)
-// ------------------------------------
 router.post('/', async (req, res) => {
     try {
         const { user_id, montant, statut, date } = req.body;
@@ -29,10 +24,6 @@ router.post('/', async (req, res) => {
         res.status(500).json({ error: "Erreur serveur inattendue lors de la création de la transaction." });
     }
 });
-
-// ------------------------------------
-// 🎯 2. GET /api/transactions (LIRE TOUT)
-// ------------------------------------
 router.get('/', async (req, res) => {
     try {
         const transactions = await transactionModel.findAll();
@@ -42,10 +33,6 @@ router.get('/', async (req, res) => {
         res.status(500).json({ error: "Erreur serveur lors de la récupération des transactions." });
     }
 });
-
-// ------------------------------------
-// 🎯 3. GET /api/transactions/:id (LIRE PAR ID)
-// ------------------------------------
 router.get('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -68,9 +55,6 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// ------------------------------------
-// 🎯 4. PUT /api/transactions/:id (MODIFIER)
-// ------------------------------------
 router.put('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);
@@ -100,9 +84,6 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// ------------------------------------
-// 🎯 5. DELETE /api/transactions/:id (SUPPRESSION)
-// ------------------------------------
 router.delete('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);

@@ -1,17 +1,11 @@
-// routes/users.js
-
 const express = require('express');
 const router = express.Router();
 const userModel = require('../models/userModel'); 
 
-// Fonction utilitaire de validation
 const isValidEmail = (email) => {
     return /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
 };
 
-// ------------------------------------
-// 🎯 1. POST /api/users (CRÉATION)
-// ------------------------------------
 router.post('/', async (req, res) => {
     try {
         const { nom, email, telephone } = req.body;
@@ -35,9 +29,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// ------------------------------------
-// 🎯 2. GET /api/users (LIRE TOUT)
-// ------------------------------------
 router.get('/', async (req, res) => {
     try {
         const users = await userModel.findAll();
@@ -48,9 +39,6 @@ router.get('/', async (req, res) => {
     }
 });
 
-// ------------------------------------
-// 🎯 3. GET /api/users/:id (LIRE PAR ID)
-// ------------------------------------
 router.get('/:id', async (req, res) => {
     try {
         const id = parseInt(req.params.id);

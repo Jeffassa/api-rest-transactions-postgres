@@ -1,8 +1,6 @@
-// models/transactionModel.js
-
 const db = require('../config/db');
 
-// Crée une nouvelle transaction
+//crée nouvelle transaction
 exports.create = async (userId, montant, statut, date) => {
     try {
         if (montant <= 0) {
@@ -19,17 +17,16 @@ exports.create = async (userId, montant, statut, date) => {
         return result.rows[0];
 
     } catch (error) {
-        if (error.code === '23503') { // Erreur Clé Étrangère (user_id n'existe pas)
+        if (error.code === '23503') { 
             throw new Error("L'utilisateur spécifié (user_id) n'existe pas.");
         }
-        if (error.message.includes('enum')) { // Erreur ENUM (statut invalide)
+        if (error.message.includes('enum')) { 
             throw new Error("Statut invalide (pending, completed ou failed uniquement)");
         }
         throw error;
     }
 };
-
-// Récupère toutes les transactions avec les infos de l'utilisateur associé
+//récupérer tout
 exports.findAll = async () => {
     try {
         const result = await db.query(
@@ -46,9 +43,7 @@ exports.findAll = async () => {
     }
 };
 
-// Récupère une seule transaction par son ID (les autres fonctions sont similaires)
 exports.findById = async (id) => {
-    // ... implémenter la jointure ici (similaire à findAll, mais avec WHERE t.id = $1)
     try {
          const result = await db.query(
             `SELECT t.*, u.nom AS user_nom
@@ -61,8 +56,6 @@ exports.findById = async (id) => {
         throw error;
     }
 };
-
-// Met à jour une transaction
 exports.update = async (id, montant, statut, date) => {
     try {
         const result = await db.query(
@@ -78,7 +71,6 @@ exports.update = async (id, montant, statut, date) => {
     }
 };
 
-// Supprime une transaction
 exports.delete = async (id) => {
      try {
         const result = await db.query(

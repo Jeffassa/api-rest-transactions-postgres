@@ -1,13 +1,6 @@
-# Fichier .gitignore
-# Indique à Git les fichiers et dossiers à ignorer.
-
-# --- Dépendances Node ---
 /node_modules
 
-# --- Fichiers d'Environnement Secrets ---
-# Crucial : contient les mots de passe de la base de données
 .env
 
-# --- Fichiers de Log et Temporaires ---
 npm-debug.log*
 .DS_Store
